@@ -20,7 +20,7 @@ public class Spring : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Hit");
+        //Debug.Log("Hit");
         gameObjectRb = collision.gameObject.GetComponent<Rigidbody2D>();
         gameObjectRb.velocity = new Vector2(gameObjectRb.velocity.x, springPower) ;
     }

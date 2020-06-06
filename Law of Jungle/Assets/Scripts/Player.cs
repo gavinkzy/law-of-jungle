@@ -21,8 +21,23 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move();
         Jump();
+        Move();
+    }
+
+
+    private void Move()
+    {
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            playerRb.velocity = new Vector2(-1 * moveSpeed, playerRb.velocity.y);
+        }
+
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            playerRb.velocity = new Vector2(1 * moveSpeed, playerRb.velocity.y);
+        }
+        
     }
 
     /*private void Move()
@@ -43,12 +58,27 @@ public class Player : MonoBehaviour
         }
     }
 
-    //This code is not the effect we want in this game.
-    private void Move()
+    /* private void Move()
+     {
+         float translation = Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
+         transform.Translate(translation, 0, 0);
+
+
+     }
+    */
+    /*
+    private IEnumerator StunHandler(float stunDuration)
     {
-        float translation = Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
-        transform.Translate(translation, 0, 0);
+        playerStunned = true;
+        Debug.Log("Player stunned.");
+        yield return new WaitForSeconds(stunDuration);
+        playerStunned = false;
+        Debug.Log("Player no longer stunned.");
     }
-   
+
+    private void StunPlayer()
+    {
+        StartCoroutine(StunHandler(stunDuration));
+    }*/
 }
     

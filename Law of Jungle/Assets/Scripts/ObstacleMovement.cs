@@ -13,6 +13,7 @@ public class ObstacleMovement : MonoBehaviour
     [SerializeField] float knockUpDist = 25f;
     public GameObject explosionEffect;
     public float explosionLifeTime = 3f;
+    public float stunDuration = 0.5f;
 
     void Start()
     {
@@ -45,7 +46,7 @@ public class ObstacleMovement : MonoBehaviour
         if (playerOnTheLeft)
         {
             player.velocity = new Vector2(-knockBackDist, knockUpDist);
-            Debug.Log("Player knocked back to the left.");
+            //Debug.Log("Player knocked back to the left.");
             StartCoroutine(ExplosionEffect(explosionLifeTime));
         }
 
@@ -54,7 +55,7 @@ public class ObstacleMovement : MonoBehaviour
         if (playerOnTheRight)
         {
             player.velocity = new Vector2(knockBackDist, knockUpDist);
-            Debug.Log("Player knocked back to the right.");
+            //Debug.Log("Player knocked back to the right.");
             StartCoroutine(ExplosionEffect(explosionLifeTime));
         }
     }

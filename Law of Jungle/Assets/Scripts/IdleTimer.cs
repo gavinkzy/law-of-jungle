@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
-using System;
+
 
 public class IdleTimer : MonoBehaviour
 {
@@ -10,23 +8,37 @@ public class IdleTimer : MonoBehaviour
     [SerializeField] TextMeshProUGUI displayTime;
 
     string display;
+    bool playerIdle;
+    
+    Rigidbody2D playerRb;
 
     // Start is called before the first frame update
     void Start()
     {
+        playerRb = GetComponent<Rigidbody2D>();
         displayTime.text = timeElapsed.ToString();
     }
 
     // Update is called once per frame
     void Update()
     {
-        UpdateStopwatch();
+        TimeIdle();
     }
 
-    private void UpdateStopwatch()
+    private void TimeIdle()
     {
-        timeElapsed += Time.deltaTime;
+        if (playerIdle = playerRb.velocity.magnitude == 0)
+        {
+            Debug.Log("Player is idle");
+            timeElapsed += Time.deltaTime;
+        }
+        else
+        {
+            timeElapsed = 0;
+        }
+
         display = timeElapsed.ToString("F1") + "s";
         displayTime.text = display;
     }
+
 }
