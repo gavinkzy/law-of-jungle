@@ -8,21 +8,24 @@ public class Player : MonoBehaviour
     //config
     [SerializeField] float moveSpeed = 5f;
     [SerializeField] float jumpSpeed = 5f;
+    public bool playerStunned;
+    public float stunDuration = 1f;
 
     //cached references
     Rigidbody2D playerRb;
 
-    // Start is called before the first frame update
     void Start()
     {
         playerRb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
-        Jump();
-        Move();
+        if (!playerStunned)
+        {
+            Move();
+            Jump();
+        }
     }
 
 
@@ -64,9 +67,8 @@ public class Player : MonoBehaviour
          transform.Translate(translation, 0, 0);
 
 
-     }
-    */
-    /*
+     } */
+
     private IEnumerator StunHandler(float stunDuration)
     {
         playerStunned = true;
@@ -76,9 +78,9 @@ public class Player : MonoBehaviour
         Debug.Log("Player no longer stunned.");
     }
 
-    private void StunPlayer()
+    public void StunPlayer()
     {
         StartCoroutine(StunHandler(stunDuration));
-    }*/
+    }
 }
     

@@ -8,12 +8,13 @@ public class ObstacleMovement : MonoBehaviour
     Rigidbody2D rigidBody2D;
     public float travelTime = 3f;
     bool flip = false;
-    Rigidbody2D player;
+    Rigidbody2D playerRb;
     [SerializeField] float knockBackDist = 50f;
     [SerializeField] float knockUpDist = 25f;
     public GameObject explosionEffect;
     public float explosionLifeTime = 3f;
     public float stunDuration = 0.5f;
+    Player playerScript;
 
     void Start()
     {
@@ -24,7 +25,7 @@ public class ObstacleMovement : MonoBehaviour
 
     void Update()
     {
-
+        FlipSprite();
     }
 
     IEnumerator FlipDelay(float travelTime)
@@ -40,22 +41,25 @@ public class ObstacleMovement : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("Hit");
-        player = collision.gameObject.GetComponent<Rigidbody2D>();
+        playerRb = collision.gameObject.GetComponent<Rigidbody2D>();
+        playerScript = collision.gameObject.GetComponent<Player>();
         //checks if player is on the left
-        bool playerOnTheLeft = player.position.x < transform.position.x;
+        bool playerOnTheLeft = playerRb.position.x < transform.position.x;
         if (playerOnTheLeft)
         {
-            player.velocity = new Vector2(-knockBackDist, knockUpDist);
+            playerRb.velocity = new Vector2(-knockBackDist, knockUpDist);
             //Debug.Log("Player knocked back to the left.");
+            playerScript.StunPlayer();
             StartCoroutine(ExplosionEffect(explosionLifeTime));
         }
 
         //checks if player is on the right
-        bool playerOnTheRight = player.position.x > transform.position.x;
+        bool playerOnTheRight = playerRb.position.x > transform.position.x;
         if (playerOnTheRight)
         {
-            player.velocity = new Vector2(knockBackDist, knockUpDist);
+            playerRb.velocity = new Vector2(knockBackDist, knockUpDist);
             //Debug.Log("Player knocked back to the right.");
+            playerScript.StunPlayer();
             StartCoroutine(ExplosionEffect(explosionLifeTime));
         }
     }
@@ -65,5 +69,14 @@ public class ObstacleMovement : MonoBehaviour
         GameObject explosion = Instantiate(explosionEffect, transform.position, Quaternion.identity);
         yield return new WaitForSeconds(explosionLifeTime);
         Destroy(explosion);
+    }
+
+    private void FlipSprite()
+    {
+        bool hasHorizontalSpeed = Mathf.Abs(rigidBody2D.velocity.x) > Mathf.Epsilon;
+        if (hasHorizontalSpeed)
+        {
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * Mathf.Sign(rigidBody2D.velocity.x), transform.localScale.y);
+        }
     }
 }

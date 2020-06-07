@@ -29,7 +29,6 @@ public class IdleTimer : MonoBehaviour
     {
         if (playerIdle = playerRb.velocity.magnitude == 0)
         {
-            Debug.Log("Player is idle");
             timeElapsed += Time.deltaTime;
         }
         else
