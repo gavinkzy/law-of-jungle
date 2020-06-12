@@ -14,11 +14,13 @@ public class Player : MonoBehaviour
     //cached references
     Rigidbody2D playerRb;
     Animator myAnimator;
+    Collider2D myFeetCollider;
 
     void Start()
     {
         playerRb = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
+        myFeetCollider = GetComponent<BoxCollider2D>();
     }
 
     private void Update()
@@ -52,7 +54,7 @@ public class Player : MonoBehaviour
 
     private void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.UpArrow) && myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
         {
             Vector3 playerVelocity = new Vector2(playerRb.velocity.x, jumpSpeed);
             playerRb.velocity = playerVelocity;
