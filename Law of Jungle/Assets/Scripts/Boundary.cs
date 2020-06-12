@@ -1,24 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class Boundary : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    Player playerScript;
+    private void Start()
     {
-        
+        playerScript = GameObject.Find("Player").GetComponent<Player>();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        collision.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
-        collision.gameObject.transform.position = new Vector2(-12.99f, 4.57f);
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentSceneIndex + 1);
     }
 }

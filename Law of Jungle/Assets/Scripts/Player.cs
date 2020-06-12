@@ -13,20 +13,30 @@ public class Player : MonoBehaviour
 
     //cached references
     Rigidbody2D playerRb;
-    Animator myAnimator;
-    Collider2D myFeetCollider;
+    public Animator myAnimator;
+    public Collider2D myFeetCollider;
+    public bool allowMovement = true;
+    OstrichSpring myOstrichSpring;
 
     void Start()
     {
         playerRb = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
         myFeetCollider = GetComponent<BoxCollider2D>();
+        myOstrichSpring = GameObject.Find("OstrichSpring").GetComponent<OstrichSpring>();
     }
 
     private void Update()
     {
-        Move();
-        Jump();
+        if (allowMovement == true)
+        {
+            Move();
+            Jump();
+        }
+        if (myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")) && !myOstrichSpring.isDead)
+        {
+            allowMovement = true;
+        }
     }
 
 
@@ -60,7 +70,7 @@ public class Player : MonoBehaviour
             playerRb.velocity = playerVelocity;
             myAnimator.SetBool("jump", true);
         }
-        if (!(playerRb.velocity.y > 0))
+        if (myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
         {
             myAnimator.SetBool("jump", false);
         }
@@ -80,5 +90,9 @@ public class Player : MonoBehaviour
         StartCoroutine(StunHandler(stunDuration));
     }
 
+    public void ToggleMovement()
+    {
+        allowMovement = false;
+    }
 }
     

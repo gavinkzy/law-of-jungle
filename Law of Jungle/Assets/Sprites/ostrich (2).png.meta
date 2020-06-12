@@ -1,31 +1,46 @@
 fileFormatVersion: 2
-guid: 59f7f09d7d7ce144a8438666604a5f3a
+guid: 8bb34b03d7b0b6d4f8ee59b991dad549
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1392339588478740851
-    second: ostrich_0
+      213: 1807007318921059226
+    second: ostrich (2)_0
   - first:
-      213: 4918897498076652051
-    second: ostrich_1
+      213: 6383134440100141056
+    second: ostrich (2)_1
   - first:
-      213: -7960526951787918692
-    second: ostrich_2
+      213: -6646078579521475546
+    second: ostrich (2)_2
   - first:
-      213: 5921238283722123599
-    second: ostrich_3
+      213: 8499030601281147912
+    second: ostrich (2)_3
   - first:
-      213: -7352213320992388241
-    second: ostrich_4
+      213: 3784431978112291438
+    second: ostrich (2)_4
   - first:
-      213: -5070392672740817177
-    second: ostrich_5
+      213: 6843884836188891711
+    second: ostrich (2)_0
   - first:
-      213: 5915030304200831580
-    second: ostrich_6
+      213: -6914313572765113644
+    second: ostrich (2)_1
   - first:
-      213: 6509342024589307238
-    second: ostrich_7
+      213: 8312506002275627080
+    second: ostrich (2)_2
+  - first:
+      213: -1559713255381035147
+    second: ostrich (2)_3
+  - first:
+      213: -5160531661249111151
+    second: ostrich (2)_5
+  - first:
+      213: -3477023642756957700
+    second: ostrich (2)_6
+  - first:
+      213: -776075040314895091
+    second: ostrich (2)_7
+  - first:
+      213: -2599544684880262755
+    second: ostrich (2)_8
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -147,10 +162,10 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ostrich_0
+      name: ostrich (2)_0
       rect:
         serializedVersion: 2
-        x: 14
+        x: 15
         y: 69
         width: 32
         height: 32
@@ -161,35 +176,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d86d20e658a6dace0800000000000000
-      internalID: -1392339588478740851
+      spriteID: f3aa8b08ffc5afe50800000000000000
+      internalID: 6843884836188891711
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ostrich_1
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 86
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 312aa6b863f634440800000000000000
-      internalID: 4918897498076652051
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ostrich_2
+      name: ostrich (2)_2
       rect:
         serializedVersion: 2
         x: 64
@@ -203,14 +197,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c9a02cdf9e6868190800000000000000
-      internalID: -7960526951787918692
+      spriteID: 840f0f2ea24fb5370800000000000000
+      internalID: 8312506002275627080
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ostrich_3
+      name: ostrich (2)_3
       rect:
         serializedVersion: 2
         x: 111
@@ -224,18 +218,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f4963b3d8d67c2250800000000000000
-      internalID: 5921238283722123599
+      spriteID: 5779b85de09ca5ae0800000000000000
+      internalID: -1559713255381035147
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ostrich_4
+      name: ostrich (2)_8
       rect:
         serializedVersion: 2
-        x: 0
-        y: 54
+        x: 65
+        y: 37
         width: 32
         height: 32
       alignment: 0
@@ -245,71 +239,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f6b8a5130f0b7f990800000000000000
-      internalID: -7352213320992388241
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ostrich_5
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 54
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7e64a8d6ab852a9b0800000000000000
-      internalID: -5070392672740817177
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ostrich_6
-      rect:
-        serializedVersion: 2
-        x: 63
-        y: 70
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c52bf85f8b8661250800000000000000
-      internalID: 5915030304200831580
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ostrich_7
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 54
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 66dea295514d55a50800000000000000
-      internalID: 6509342024589307238
+      spriteID: d9905ffc1ef8cebd0800000000000000
+      internalID: -2599544684880262755
       vertices: []
       indices: 
       edges: []

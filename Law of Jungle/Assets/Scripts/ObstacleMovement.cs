@@ -21,6 +21,7 @@ public class ObstacleMovement : MonoBehaviour
         rigidBody2D = GetComponent<Rigidbody2D>();
         rigidBody2D.velocity = new Vector2(moveSpeed, 0f);
         StartCoroutine(FlipDelay(travelTime));
+        playerScript = GameObject.Find("Player").GetComponent<Player>();
     }
 
     void Update()
@@ -42,14 +43,14 @@ public class ObstacleMovement : MonoBehaviour
     {
         Debug.Log("Hit");
         playerRb = collision.gameObject.GetComponent<Rigidbody2D>();
-        playerScript = collision.gameObject.GetComponent<Player>();
+        //playerScript = collision.gameObject.GetComponent<Player>();
         //checks if player is on the left
         bool playerOnTheLeft = playerRb.position.x < transform.position.x;
         if (playerOnTheLeft)
         {
             playerRb.velocity = new Vector2(-knockBackDist, knockUpDist);
             //Debug.Log("Player knocked back to the left.");
-            playerScript.StunPlayer();
+            playerScript.ToggleMovement();
             StartCoroutine(ExplosionEffect(explosionLifeTime));
         }
 
@@ -59,7 +60,7 @@ public class ObstacleMovement : MonoBehaviour
         {
             playerRb.velocity = new Vector2(knockBackDist, knockUpDist);
             //Debug.Log("Player knocked back to the right.");
-            playerScript.StunPlayer();
+            playerScript.ToggleMovement();
             StartCoroutine(ExplosionEffect(explosionLifeTime));
         }
     }
