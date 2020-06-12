@@ -18,6 +18,7 @@ public class Boundary : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        collision.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
         collision.gameObject.transform.position = new Vector2(-12.99f, 4.57f);
     }
 }
