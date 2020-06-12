@@ -13,19 +13,18 @@ public class Player : MonoBehaviour
 
     //cached references
     Rigidbody2D playerRb;
+    Animator myAnimator;
 
     void Start()
     {
         playerRb = GetComponent<Rigidbody2D>();
+        myAnimator = GetComponent<Animator>();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        if (!playerStunned)
-        {
-            Move();
-            Jump();
-        }
+        Move();
+        Jump();
     }
 
 
@@ -34,23 +33,22 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             playerRb.velocity = new Vector2(-1 * moveSpeed, playerRb.velocity.y);
+            transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y);
+            myAnimator.SetBool("walk", true);
         }
 
         if (Input.GetKey(KeyCode.RightArrow))
         {
             playerRb.velocity = new Vector2(1 * moveSpeed, playerRb.velocity.y);
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y);
+            myAnimator.SetBool("walk", true);
+        }
+        if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow))
+        {
+            myAnimator.SetBool("walk", false);
         }
         
     }
-
-    /*private void Move()
-    {
-        float x = Input.GetAxis("Horizontal");
-
-        Vector3 playerVelocity = new Vector2(x, playerRb.velocity.y);
-        playerVelocity = playerVelocity.normalized * moveSpeed * Time.deltaTime; // framerate independent, normalize to return magnitude of 1 with direction
-        playerRb.MovePosition(playerRb.transform.position + playerVelocity);
-    }*/
 
     private void Jump()
     {
@@ -58,16 +56,13 @@ public class Player : MonoBehaviour
         {
             Vector3 playerVelocity = new Vector2(playerRb.velocity.x, jumpSpeed);
             playerRb.velocity = playerVelocity;
+            myAnimator.SetBool("jump", true);
+        }
+        if (!(playerRb.velocity.y > 0))
+        {
+            myAnimator.SetBool("jump", false);
         }
     }
-
-    /* private void Move()
-     {
-         float translation = Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
-         transform.Translate(translation, 0, 0);
-
-
-     } */
 
     private IEnumerator StunHandler(float stunDuration)
     {
@@ -82,5 +77,6 @@ public class Player : MonoBehaviour
     {
         StartCoroutine(StunHandler(stunDuration));
     }
+
 }
     
